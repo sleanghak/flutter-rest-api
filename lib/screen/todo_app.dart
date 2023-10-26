@@ -70,7 +70,32 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
       // headers: {' Content-Type': 'application/json'},
     );
     //  Show success or fail message based on status
-    print(response.statusCode);
-    print(response.body);
+
+    if (response.statusCode == 201) {
+      print('\n Creation Success! \n');
+      titleController.text = "";
+      descriptionController.text = "";
+      ShowSuccessMessage('Creation Success!');
+    } else {
+      print('\n Creation Failed! \n');
+      ShowErrorMessage('Creation Failed!');
+      print(response.body);
+    }
+  }
+
+  void ShowSuccessMessage(String message) {
+    final snackBar = SnackBar(content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void ShowErrorMessage(String message) {
+    final snackBar = SnackBar(
+      content: Text(
+        message,
+        style: const TextStyle(color: Colors.white),
+      ),
+      backgroundColor: Colors.red,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

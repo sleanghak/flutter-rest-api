@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       //   // useMaterial3: true,
       // ),
       theme: ThemeData.dark(),
-      // home: HomeScreen(),
-      home: const TodoListScreen(),
+      home: HomeScreen(),
+      // home: TodoListScreen(),
     );
   }
 }
